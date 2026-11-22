@@ -1,99 +1,601 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Imtiaj — Senior Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<style>
-  :root {
-    --bg: #eef1f6; --ink: #14213d; --muted: #4b5873; --line: #c9d1e0; --accent: #2f4bff; --accent-ink: #ffffff; --chip: #dfe5f1;
-    color-scheme: light;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #101626; --ink: #e8ecf7; --muted: #9ba7c3; --line: #29324b; --accent: #8fa2ff; --accent-ink: #101626; --chip: #1b2440;
-      color-scheme: dark;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Imtiaj | Senior Software Engineer</title>
+  <meta name="description"
+    content="Imtiaj is a Senior Software Engineer with 7 years of experience in software development, HTML, CSS and Python. Explore projects, skills and professional experience.">
+  <meta name="theme-color" content="#080d19">
+
+  <!-- Tailwind CSS CDN: suitable for prototypes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            midnight: '#080d19',
+            panel: '#101827',
+            accent: '#60a5fa',
+            electric: '#3b82f6'
+          },
+          boxShadow: {
+            glow: '0 0 45px rgba(59,130,246,0.12)'
+          }
+        }
+      }
     }
-  }
-  :root[data-theme="dark"] {
-    --bg: #101626; --ink: #e8ecf7; --muted: #9ba7c3; --line: #29324b; --accent: #8fa2ff; --accent-ink: #101626; --chip: #1b2440;
-    color-scheme: dark;
-  }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
-  body { background: var(--bg); color: var(--ink); font-family: 'Newsreader', Georgia, serif; font-size: 1.125rem; line-height: 1.65; }
-  .display { font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; }
-  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-  .name { font-size: clamp(4.5rem, 20vw, 13rem); line-height: .86; letter-spacing: -0.04em; }
-  .cursor { display: inline-block; width: .09em; height: .78em; margin-left: .06em; background: var(--accent); vertical-align: -0.02em; animation: blink 1.1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
-</style>
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    ::selection {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #93c5fd, #60a5fa, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .project-card {
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(96,165,250,.55);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
-<body>
-<header class="mx-auto flex max-w-5xl items-center justify-between px-6 pt-8 display text-base">
-  <a href="#top" class="font-bold">Imtiaj</a>
-  <nav class="flex gap-6" style="color: var(--muted)">
-    <a href="#work" class="hover:underline">Work</a>
-    <a href="#toolkit" class="hover:underline">Toolkit</a>
-    <a href="#contact" class="hover:underline">Contact</a>
-  </nav>
-</header>
 
-<main id="top" class="mx-auto max-w-5xl px-6">
-  <section class="pb-24 pt-20 sm:pt-28">
-    <h1 class="display name font-extrabold">Imtiaj<span class="cursor" aria-hidden="true"></span></h1>
-    <p class="mt-10 max-w-xl text-2xl leading-snug sm:text-3xl">
-      Senior software engineer with seven years of building things that run on Python and render in plain HTML and CSS.
-    </p>
-    <a href="#contact" class="display mt-10 inline-block rounded-full px-7 py-3 text-base font-bold" style="background: var(--accent); color: var(--accent-ink)">Get in touch</a>
-  </section>
+<body class="bg-midnight text-slate-100 antialiased">
 
-  <section id="work" class="border-t py-16" style="border-color: var(--line)">
-    <h2 class="display text-3xl font-bold sm:text-4xl">Selected work</h2>
-    <p class="mt-3 max-w-md" style="color: var(--muted)">A few projects I can walk you through in detail.</p>
-    <ul class="mt-10">
-      <li class="grid gap-2 border-t py-7 sm:grid-cols-[1fr_2fr_auto] sm:gap-8" style="border-color: var(--line)">
-        <h3 class="display text-xl font-bold">Inventory sync service</h3>
-        <p>A Python service that keeps stock counts consistent across warehouses and the storefront.</p>
-        <p class="display text-sm" style="color: var(--muted)">Python · PostgreSQL</p>
-      </li>
-      <li class="grid gap-2 border-t py-7 sm:grid-cols-[1fr_2fr_auto] sm:gap-8" style="border-color: var(--line)">
-        <h3 class="display text-xl font-bold">Reporting dashboard</h3>
-        <p>Fast, accessible HTML and CSS dashboards that turn raw numbers into pages people read daily.</p>
-        <p class="display text-sm" style="color: var(--muted)">HTML · Tailwind</p>
-      </li>
-      <li class="grid gap-2 border-y py-7 sm:grid-cols-[1fr_2fr_auto] sm:gap-8" style="border-color: var(--line)">
-        <h3 class="display text-xl font-bold">Internal design system</h3>
-        <p>A shared component library that cut duplicated styling across several product teams.</p>
-        <p class="display text-sm" style="color: var(--muted)">CSS · Documentation</p>
-      </li>
-    </ul>
-  </section>
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 border-b border-white/[0.07] bg-midnight/90 backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8"
+         aria-label="Main navigation">
 
-  <section id="toolkit" class="py-16">
-    <h2 class="display text-3xl font-bold sm:text-4xl">Toolkit</h2>
-    <div class="mt-8 flex flex-wrap gap-3 display text-base">
-      <span class="rounded-md px-4 py-2" style="background: var(--chip)">Python</span>
-      <span class="rounded-md px-4 py-2" style="background: var(--chip)">HTML</span>
-      <span class="rounded-md px-4 py-2" style="background: var(--chip)">CSS</span>
-      <span class="rounded-md px-4 py-2" style="background: var(--chip)">Tailwind CSS</span>
+      <a href="#home" class="text-xl font-extrabold tracking-tight"
+         aria-label="Imtiaj home">
+        IMTIAJ<span class="text-accent">.DEV</span>
+      </a>
+
+      <div class="hidden items-center gap-7 text-sm text-slate-400 md:flex">
+        <a class="transition hover:text-white" href="#about">About</a>
+        <a class="transition hover:text-white" href="#skills">Skills</a>
+        <a class="transition hover:text-white" href="#projects">Projects</a>
+        <a class="transition hover:text-white" href="#experience">Experience</a>
+
+        <a href="#contact"
+           class="rounded-lg bg-blue-500 px-4 py-2.5 font-semibold text-white transition hover:bg-blue-400">
+          Contact Me
+        </a>
+      </div>
+
+      <button id="menuButton"
+        type="button"
+        class="rounded-lg border border-slate-700 px-3 py-2 text-sm md:hidden"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        aria-label="Toggle navigation">
+        <span id="menuLabel">Menu</span>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="hidden border-t border-white/[0.07] px-5 py-4 md:hidden">
+      <div class="mx-auto max-w-7xl space-y-1">
+        <a class="block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5" href="#about">About</a>
+        <a class="block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5" href="#skills">Skills</a>
+        <a class="block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5" href="#projects">Projects</a>
+        <a class="block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5" href="#experience">Experience</a>
+        <a class="block rounded-lg px-3 py-3 text-blue-300 hover:bg-white/5" href="#contact">Contact</a>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <section id="contact" class="border-t py-20" style="border-color: var(--line)">
-    <h2 class="display text-4xl font-extrabold sm:text-6xl">Have something to build?</h2>
-    <p class="mt-5 max-w-md" style="color: var(--muted)">I reply to every message within a couple of days.</p>
-    <a href="mailto:you@example.com" class="display mt-8 inline-block text-2xl font-bold underline decoration-4 underline-offset-8" style="text-decoration-color: var(--accent)">you@example.com</a>
-  </section>
-</main>
+  <main>
 
-<footer class="mx-auto max-w-5xl px-6 pb-10 display text-sm" style="color: var(--muted)">© 2026 Imtiaj</footer>
+    <!-- Hero -->
+    <section id="home" class="relative isolate overflow-hidden">
+      <div class="hero-grid absolute inset-0 -z-10" aria-hidden="true"></div>
+      <div class="absolute -top-48 right-0 -z-10 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl"
+           aria-hidden="true"></div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.3fr_.7fr] lg:gap-16 lg:py-36">
+
+        <div class="reveal">
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-4 py-2 text-sm text-blue-300">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            Senior Software Engineer · 7 Years Experience
+          </div>
+
+          <p class="mb-4 text-sm font-semibold uppercase tracking-[.22em] text-slate-400">
+            Hello, I'm Imtiaj
+          </p>
+
+          <h1 class="max-w-3xl text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
+            I engineer
+            <span class="gradient-text">software</span>
+            that solves real problems.
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+            Senior Software Engineer with 7 years of experience.
+            I work with HTML, CSS and Python to build practical,
+            maintainable software and thoughtful web experiences.
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-4">
+            <a href="#projects"
+               class="inline-flex items-center gap-2 rounded-xl bg-blue-500 px-6 py-3.5 font-semibold text-white shadow-glow transition hover:bg-blue-400">
+              Explore My Work <span aria-hidden="true">↗</span>
+            </a>
+
+            <a href="resume.pdf" download="Imtiaj-Resume.pdf"
+               class="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-6 py-3.5 font-semibold text-slate-200 transition hover:border-blue-400 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/>
+              </svg>
+              Download Resume
+            </a>
+          </div>
+
+          <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-400">
+            <a href="https://github.com/yourusername"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 hover:text-blue-300">
+              <span aria-hidden="true">⌘</span> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/yourusername/"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 hover:text-blue-300">
+              <span aria-hidden="true">in</span> LinkedIn
+            </a>
+            <span class="text-slate-600">|</span>
+            <span>Open to the right opportunity</span>
+          </div>
+        </div>
+
+        <!-- Initials hero visual -->
+        <div class="reveal flex justify-center lg:justify-end">
+          <div class="relative flex aspect-square w-full max-w-[350px] items-center justify-center sm:max-w-[400px]">
+
+            <div class="absolute inset-4 rounded-full border border-blue-400/10"></div>
+            <div class="absolute inset-10 rounded-full border border-blue-400/15"></div>
+            <div class="absolute inset-[4.5rem] rounded-full bg-blue-500/10 blur-2xl"></div>
+
+            <div class="relative flex h-48 w-48 items-center justify-center rounded-[2rem] border border-blue-300/30 bg-gradient-to-br from-blue-500/20 via-slate-900 to-indigo-500/20 shadow-glow sm:h-56 sm:w-56">
+              <span class="gradient-text text-7xl font-extrabold tracking-tighter sm:text-8xl">IM</span>
+              <div class="absolute -bottom-3 -right-3 rounded-xl border border-blue-300/30 bg-slate-900 px-4 py-2 text-xs font-semibold text-blue-200">
+                SOFTWARE ENGINEER
+              </div>
+            </div>
+
+            <div class="absolute left-0 top-12 rounded-xl border border-slate-700/80 bg-slate-900/90 px-4 py-3 shadow-xl">
+              <p class="text-xs text-slate-500">Experience</p>
+              <p class="mt-1 font-bold text-white">7+ Years</p>
+            </div>
+
+            <div class="absolute bottom-10 right-0 rounded-xl border border-slate-700/80 bg-slate-900/90 px-4 py-3 shadow-xl">
+              <p class="text-xs text-slate-500">Core language</p>
+              <p class="mt-1 font-bold text-blue-300">Python</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Career snapshot -->
+    <section class="border-y border-white/[0.07] bg-white/[0.015]">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-white/[0.07] px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-8">
+
+        <div class="py-7 sm:px-8 sm:py-9">
+          <p class="text-3xl font-extrabold text-white">7<span class="text-blue-400">+</span></p>
+          <p class="mt-2 text-sm text-slate-400">Years in Software Engineering</p>
+        </div>
+
+        <div class="py-7 sm:px-8 sm:py-9">
+          <p class="text-3xl font-extrabold text-white">Web<span class="text-blue-400"> + </span>Python</p>
+          <p class="mt-2 text-sm text-slate-400">Core technologies</p>
+        </div>
+
+        <div class="py-7 sm:px-8 sm:py-9">
+          <p class="text-3xl font-extrabold text-white">Quality<span class="text-blue-400">.</span></p>
+          <p class="mt-2 text-sm text-slate-400">Focus on maintainable software</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+      <div class="reveal grid gap-12 lg:grid-cols-2 lg:gap-20">
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-blue-400">About Me</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+            Turning technical challenges into practical solutions.
+          </h2>
+        </div>
+
+        <div class="space-y-5 leading-8 text-slate-400">
+          <p>
+            I'm Imtiaj, a Senior Software Engineer with seven years
+            of professional experience. I enjoy understanding complex
+            requirements and translating them into software that is
+            clear, useful, and maintainable.
+          </p>
+          <p>
+            My core technologies include HTML, CSS, and Python.
+            I value readable code, thoughtful problem-solving,
+            continuous improvement, and collaboration.
+          </p>
+          <p>
+            I'm interested in opportunities where I can contribute
+            engineering experience, help solve meaningful problems,
+            and continue growing with a strong technical team.
+          </p>
+
+          <a href="#experience"
+             class="inline-flex items-center gap-2 font-semibold text-blue-400 hover:text-blue-300">
+            More about my experience <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="border-y border-white/[0.07] bg-white/[0.015]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+
+        <div class="reveal max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-blue-400">Technical Skills</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">My engineering toolkit.</h2>
+          <p class="mt-5 leading-7 text-slate-400">
+            The core technologies you've shared, presented in a clean
+            skills overview. Add further tools based on your actual experience.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+          <article class="reveal rounded-2xl border border-slate-800 bg-panel p-6 transition hover:border-blue-400/40">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-400/10 text-xl font-extrabold text-orange-300">5</div>
+            <h3 class="mt-5 text-xl font-bold">HTML</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Structured web content, semantic elements, and accessible page layouts.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs text-slate-300">HTML5</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs text-slate-300">Semantics</span>
+            </div>
+          </article>
+
+          <article class="reveal rounded-2xl border border-slate-800 bg-panel p-6 transition hover:border-blue-400/40">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-400/10 text-xl font-extrabold text-blue-300">#</div>
+            <h3 class="mt-5 text-xl font-bold">CSS & Tailwind CSS</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Responsive interfaces, reusable styling, and consistent visual design.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs text-slate-300">CSS3</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs text-slate-300">Tailwind CSS</span>
+            </div>
+          </article>
+
+          <article class="reveal rounded-2xl border border-slate-800 bg-panel p-6 transition hover:border-blue-400/40">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-400/10 text-2xl text-yellow-300">Py</div>
+            <h3 class="mt-5 text-xl font-bold">Python</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-400">
+              Python-based development and scripting for practical software tasks.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs text-slate-300">Python</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs text-slate-300">Problem Solving</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+
+      <div class="reveal flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-blue-400">Selected Work</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Projects & engineering work.</h2>
+          <p class="mt-5 max-w-2xl leading-7 text-slate-400">
+            Highlight real projects, your contribution, the technology used,
+            and the impact you made.
+          </p>
+        </div>
+
+        <a href="https://github.com/yourusername"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300">
+          All GitHub projects ↗
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+        <article class="project-card reveal rounded-2xl border border-slate-800 bg-panel p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-400/10 text-xl">⌘</div>
+            <span class="text-xs text-slate-500">PROJECT 01</span>
+          </div>
+          <p class="mt-7 text-xs font-semibold uppercase tracking-widest text-blue-400">Web Development</p>
+          <h3 class="mt-2 text-xl font-bold">Web Application</h3>
+          <p class="mt-4 text-sm leading-7 text-slate-400">
+            Replace this example with a real application you developed.
+            Explain the problem, your role, and the outcome.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs">HTML</span>
+            <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs">CSS</span>
+          </div>
+          <a href="https://github.com/yourusername/your-project"
+             target="_blank" rel="noopener noreferrer"
+             class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300">
+            View Repository ↗
+          </a>
+        </article>
+
+        <article class="project-card reveal rounded-2xl border border-slate-800 bg-panel p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-400/10 text-xl">⚙</div>
+            <span class="text-xs text-slate-500">PROJECT 02</span>
+          </div>
+          <p class="mt-7 text-xs font-semibold uppercase tracking-widest text-purple-300">Python Development</p>
+          <h3 class="mt-2 text-xl font-bold">Python Solution</h3>
+          <p class="mt-4 text-sm leading-7 text-slate-400">
+            Showcase a Python application, script, or automation tool.
+            Describe its purpose and the technical decisions you made.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs">Python</span>
+            <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs">Automation</span>
+          </div>
+          <a href="https://github.com/yourusername/your-python-project"
+             target="_blank" rel="noopener noreferrer"
+             class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300">
+            View Repository ↗
+          </a>
+        </article>
+
+        <article class="project-card reveal rounded-2xl border border-slate-800 bg-panel p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10 text-xl">↗</div>
+            <span class="text-xs text-slate-500">PROJECT 03</span>
+          </div>
+          <p class="mt-7 text-xs font-semibold uppercase tracking-widest text-emerald-300">Software Engineering</p>
+          <h3 class="mt-2 text-xl font-bold">Engineering Improvement</h3>
+          <p class="mt-4 text-sm leading-7 text-slate-400">
+            Feature an improvement you delivered, such as performance,
+            reliability, maintainability, or a better user experience.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs">Engineering</span>
+            <span class="rounded-full bg-slate-800 px-3 py-1.5 text-xs">Quality</span>
+          </div>
+          <a href="https://github.com/yourusername"
+             target="_blank" rel="noopener noreferrer"
+             class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300">
+            Explore on GitHub ↗
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="border-y border-white/[0.07] bg-white/[0.015]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+
+        <div class="reveal max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-blue-400">Career Journey</p>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Professional experience.</h2>
+          <p class="mt-5 leading-7 text-slate-400">
+            Use this section to demonstrate career progression, responsibilities,
+            and results from your seven years in the industry.
+          </p>
+        </div>
+
+        <div class="mt-12 max-w-3xl border-l border-slate-700 pl-7 sm:pl-10">
+
+          <article class="reveal relative pb-12">
+            <span class="absolute -left-[32px] top-1 h-3 w-3 rounded-full border-2 border-blue-400 bg-midnight sm:-left-[41px]"></span>
+            <p class="text-sm font-medium text-blue-400">Current / Most Recent Role</p>
+            <h3 class="mt-3 text-xl font-bold">Senior Software Engineer</h3>
+            <p class="mt-2 text-sm text-slate-400">Your Company · Employment dates</p>
+            <p class="mt-4 leading-7 text-slate-400">
+              Add a concise description of your current role, the systems
+              you work on, and your key engineering responsibilities.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm leading-6 text-slate-400">
+              <li>• Describe a significant feature or system you delivered.</li>
+              <li>• Include improvements in performance, reliability, or quality.</li>
+              <li>• Mention technical collaboration or mentoring, if applicable.</li>
+            </ul>
+          </article>
+
+          <article class="reveal relative">
+            <span class="absolute -left-[32px] top-1 h-3 w-3 rounded-full border-2 border-slate-600 bg-midnight sm:-left-[41px]"></span>
+            <p class="text-sm font-medium text-slate-400">Previous Role</p>
+            <h3 class="mt-3 text-xl font-bold">Software Engineer / Previous Position</h3>
+            <p class="mt-2 text-sm text-slate-400">Previous Company · Employment dates</p>
+            <p class="mt-4 leading-7 text-slate-400">
+              Add your earlier experience, technical responsibilities,
+              and achievements that demonstrate your professional growth.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume call to action -->
+    <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+      <div class="reveal flex flex-col items-start justify-between gap-6 rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/[0.12] to-indigo-500/[0.04] p-7 sm:p-10 md:flex-row md:items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest text-blue-300">My Resume</p>
+          <h2 class="mt-3 text-2xl font-bold sm:text-3xl">Want to know more about my background?</h2>
+          <p class="mt-3 leading-7 text-slate-400">
+            View my resume for detailed experience, skills, and qualifications.
+          </p>
+        </div>
+        <a href="resume.pdf" download="Imtiaj-Resume.pdf"
+           class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-blue-500 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-400">
+          Download CV <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="border-t border-white/[0.07]">
+      <div class="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 sm:py-28">
+
+        <div class="reveal mx-auto max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-blue-400">Get In Touch</p>
+          <h2 class="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
+            Let's build something meaningful.
+          </h2>
+          <p class="mx-auto mt-6 max-w-2xl leading-8 text-slate-400">
+            I'm interested in connecting with engineering teams and discussing
+            opportunities where my skills and experience can make a difference.
+          </p>
+
+          <a href="mailto:your.email@example.com"
+             class="mt-9 inline-flex items-center gap-2 rounded-xl bg-blue-500 px-7 py-4 font-semibold text-white transition hover:bg-blue-400">
+            Contact Me by Email ↗
+          </a>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+            <a href="https://github.com/yourusername"
+               target="_blank" rel="noopener noreferrer"
+               class="transition hover:text-blue-300">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/yourusername/"
+               target="_blank" rel="noopener noreferrer"
+               class="transition hover:text-blue-300">LinkedIn ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/[0.07]">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <a href="#home" class="font-bold text-slate-300">
+        IMTIAJ<span class="text-blue-400">.DEV</span>
+      </a>
+      <p>© <span id="year"></span> Imtiaj. All rights reserved.</p>
+      <a href="#home" class="hover:text-blue-300">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuLabel = document.getElementById('menuLabel');
+
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden', expanded);
+      menuLabel.textContent = expanded ? 'Menu' : 'Close';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuLabel.textContent = 'Menu';
+      });
+    });
+
+    // Automatically update footer year
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+    // Reveal sections as they enter the viewport
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add('visible'));
+    }
+  </script>
+
 </body>
 </html>
